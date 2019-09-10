@@ -2362,10 +2362,11 @@ static int qpnp_wled_config(struct qpnp_wled *wled)
 		else
 			reg |= ~QPNP_WLED_GATE_DRV_MASK;
 
-			rc = qpnp_wled_write_reg(wled,
-			QPNP_WLED_MOD_EN_REG(wled->sink_base, i), reg);
-			if (rc)
-				return rc;
+		rc = qpnp_wled_write_reg(wled,
+		QPNP_WLED_MOD_EN_REG(wled->sink_base, i), reg);
+
+		if (rc)
+			return rc;
 
 		/* SINK EN */
 		temp = wled->strings[i] + QPNP_WLED_CURR_SINK_SHIFT;

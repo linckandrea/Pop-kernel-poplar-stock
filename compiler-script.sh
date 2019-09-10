@@ -1,7 +1,8 @@
-export ARCH=arm64 && export SUBARCH=arm64
-export CROSS_COMPILE=/home/andrea/uber-64-4.9/bin/aarch64-linux-android-
-mkdir -p out
+export ARCH=arm64
 make O=out clean
 make O=out mrproper
-make O=out Pop_kernel_poplar_defconfig
+export PATH=/home/andrea/uber-64-4.9/bin:$PATH
+export CROSS_COMPILE=aarch64-linux-android-
+export KBUILD_DIFFCONFIG=poplar_diffconfig
+make Pop-kernel_base_defconfig O=./out
 make O=out -j4
